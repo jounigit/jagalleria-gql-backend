@@ -24,7 +24,9 @@
   "homepage": "https://github.com/jounigit/jagalleria-gql-backend#readme",
   "dependencies": {
     "apollo-server": "^2.16.1",
+    "babel-eslint": "^10.1.0",
     "dotenv": "^8.2.0",
+    "eslint": "^7.7.0",
     "graphql": "^15.3.0",
     "mongoose": "^5.10.0"
   },
