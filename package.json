@@ -1,0 +1,32 @@
+{
+  "name": "jagalleria-gql-backend",
+  "version": "1.0.0",
+  "description": "backend for jagalleria",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jounigit/jagalleria-gql-backend.git"
+  },
+  "keywords": [
+    "graphql",
+    "mongoose",
+    "node"
+  ],
+  "author": "jouni airaksinen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jounigit/jagalleria-gql-backend/issues"
+  },
+  "homepage": "https://github.com/jounigit/jagalleria-gql-backend#readme",
+  "dependencies": {
+    "apollo-server": "^2.16.1",
+    "graphql": "^15.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
