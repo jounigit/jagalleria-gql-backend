@@ -1,19 +1,10 @@
-const { ApolloServer, gql } = require('apollo-server')
+const { ApolloServer } = require('apollo-server')
 const config = require('./utils/config')
 const logger = require('./utils/logger')
 const mongoose = require('mongoose')
-
-const typeDefs = gql`
-  type Query {
-      hello: String
-  }
-`
-
-const resolvers = {
-  Query: {
-    hello: () => 'hello',
-  },
-}
+const typeDefs = require('./graphql/schema')
+const AlbumResolver = require('./graphql/resolvers/Album')
+const CategoryResolver = require('./graphql/resolvers/Category')
 
 logger.info('connecting to', config.MONGODB_URI)
 
@@ -32,7 +23,7 @@ mongoose
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers
+  resolvers: [AlbumResolver, CategoryResolver]
 })
 
 // The `listen` method launches a web server.
