@@ -1,9 +1,11 @@
 const { gql } = require('apollo-server')
 
 const typeDefs = gql`
+##### TYPES
  type Category {
      _id: ID!
      title: String!
+     slug: String
      content: String
     albums: [Album]
  }
@@ -11,26 +13,65 @@ const typeDefs = gql`
  type Album {
     _id: ID!
     title: String!
+    slug: String
     content: String
     category: Category
 }
 
+##### QUERIES
 type Query {
     categories: [Category!]
     albums: [Album!]
+    album(id: String!): Album
+    albumBySlug(slug: String!): Album
+    category(id: String!): Category
+    categoryBySlug(slug: String!): Category
+}
+
+##### INPUTS
+input CategoryInput {
+    title: String!
+    content: String
+    albums: String
+}
+
+input UpdateCategoryInput {
+    title: String
+    content: String
+}
+
+input AlbumInput {
+    title: String!
+    content: String
+    category: String
+}
+
+input UpdateAlbumInput {
+    title: String
+    content: String
+    category: String
+}
+
+##### MUTATIONS
+type Mutation {
+    addAlbumToCategory(
+        id: String!
+        album: String!
+        ): Category
+    createCategory(category: CategoryInput): Category
+    updateCategory(
+        id: String!
+        category: UpdateCategoryInput
+    ): Category
+    deleteCategory(id: String!): Boolean
+
+    createAlbum(album: AlbumInput): Album
+    updateAlbum(
+        id: String!
+        album: UpdateAlbumInput
+    ): Album
+    deleteAlbum(id: String!): Boolean
 }
 `
 
-// const typeDefs = gql`
-
-
-
-
-// # type Query {
-// #     categories: [Category!]
-// #     category(id:ID!): Category
-// #     albums: [Album!]
-// #     album(id:ID!): Album
-// # }
-// `
 module.exports = typeDefs
