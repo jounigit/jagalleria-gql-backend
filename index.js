@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const typeDefs = require('./graphql/schema')
 const AlbumResolver = require('./graphql/resolvers/Album')
 const CategoryResolver = require('./graphql/resolvers/Category')
+const PictureResolver = require('./graphql/resolvers/Picture')
 
 logger.info('connecting to', config.MONGODB_URI)
 
@@ -23,7 +24,7 @@ mongoose
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers: [AlbumResolver, CategoryResolver]
+  resolvers: [AlbumResolver, CategoryResolver, PictureResolver]
 })
 
 // The `listen` method launches a web server.
